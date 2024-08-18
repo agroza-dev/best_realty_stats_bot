@@ -4,6 +4,8 @@ version = "0.1.0"
 description = ""
 authors = ["a.groza <a.groza.dev@gmail.com>"]
 readme = "README.md"
+packages = [{include = "stats_bot"}]
+
 
 [tool.poetry.dependencies]
 python = "^3.12"

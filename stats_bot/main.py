@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from stats_bot.services import logger
 
 app = FastAPI()
 

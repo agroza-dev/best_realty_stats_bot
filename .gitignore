@@ -3,3 +3,4 @@ __pycache__
 poetry.lock
 stats_bot/config.py
 var/db.sqlite3
+var/logs/*.log*

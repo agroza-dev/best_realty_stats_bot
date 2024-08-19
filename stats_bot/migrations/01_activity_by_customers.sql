@@ -1,6 +1,7 @@
-CREATE TABLE IF NOT EXISTS activity_by_customers (
-    date_time TIMESTAMP DEFAULT NULL,
-    deal_id INTEGER DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS customer_activity (
+    customer_activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lead_id INTEGER DEFAULT NULL,
     status STRING NOT NULL,
-    event_manager STRING NOT NULL
+    event_manager STRING NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );

@@ -1,6 +1,8 @@
 import os
 import asyncio
-from common import db_execute, db_fetch_all, db_close_async
+from common.db import execute as db_execute
+from common.db import fetch_all as db_fetch_all
+from common.db import db_close_async
 from common.config import config
 
 

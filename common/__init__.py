@@ -1,4 +1,4 @@
-from common import config
+from common.config import config
 from common.logger import logger
 from common.db import execute as db_execute
 from common.db import fetch_all as db_fetch_all

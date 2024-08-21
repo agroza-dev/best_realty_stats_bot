@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["a.groza <a.groza.dev@gmail.com>"]
 readme = "README.md"
-packages = [{include = "stats_bot"}]
+packages = [{include = "services"}]
 
 
 [tool.poetry.dependencies]

@@ -1,7 +1,7 @@
 import logging
 import os
 from logging.handlers import TimedRotatingFileHandler
-from config import config
+from common.config import config
 
 
 def setup_logging():

@@ -5,7 +5,7 @@ from typing import Any, AnyStr
 
 import aiosqlite
 
-from common.config import config
+from config import config
 
 
 class DatabaseException(Exception):

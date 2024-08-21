@@ -2,5 +2,5 @@
 __pycache__
 poetry.lock
 common/config.py
-var/db.sqlite3
+var/*.sqlite3
 var/logs/*.log*

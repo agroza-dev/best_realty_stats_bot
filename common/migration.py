@@ -1,12 +1,12 @@
 import os
 import asyncio
-from stats_bot import db
-from stats_bot import config
+from common import db_execute, db_fetch_all, db_close_async
+from common.config import config
 
 
 async def apply_migrations():
-    migrations_dir = config.MIGRATIONS_DIR
-    await db.execute(
+    migrations_dir = config.Db.MIGRATIONS_DIR
+    await db_execute(
         '''
             CREATE TABLE IF NOT EXISTS schema_migrations (
                 version TEXT PRIMARY KEY
@@ -14,7 +14,7 @@ async def apply_migrations():
         '''
     )
 
-    applied_migrations = set(row['version'] for row in await db.fetch_all("SELECT version FROM schema_migrations"))
+    applied_migrations = set(row['version'] for row in await db_fetch_all("SELECT version FROM schema_migrations"))
 
     migrations = sorted([f for f in os.listdir(migrations_dir) if f.endswith('.sql')])
 
@@ -25,11 +25,11 @@ async def apply_migrations():
 
         with open(os.path.join(migrations_dir, migration), 'r') as f:
             sql = f.read()
-            await db.execute(sql)
-            await db.execute("INSERT INTO schema_migrations (version) VALUES (?)", (migration,))
+            await db_execute(sql)
+            await db_execute("INSERT INTO schema_migrations (version) VALUES (?)", (migration,))
             print(f"Applied migration: {migration}")
 
-    db.close_async_db()
+    db_close_async()
 
 if __name__ == "__main__":
     asyncio.run(apply_migrations())

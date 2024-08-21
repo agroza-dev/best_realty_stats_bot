@@ -1,11 +1,11 @@
 import logging
 import os
 from logging.handlers import TimedRotatingFileHandler
-from stats_bot import config
+from common.config import config
 
 
 def setup_logging():
-    log_dir = config.LOGS_DIR
+    log_dir = config.Store.LOGS_DIR
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 

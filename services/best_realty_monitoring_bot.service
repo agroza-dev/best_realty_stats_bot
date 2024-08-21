@@ -1,0 +1,14 @@
+[Unit]
+Description=Best Realty Managers Monitoring Bot
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/projects/best_realty_stats_bot
+Restart=on-failure
+RestartSec=5s
+ExecStart=/root/.cache/pypoetry/virtualenvs/my_new_service_env/bin/python -m services/main.py
+
+[Install]
+WantedBy=multi-user.target

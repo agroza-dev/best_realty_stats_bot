@@ -5,7 +5,7 @@ from typing import Any, AnyStr
 
 import aiosqlite
 
-from stats_bot import config
+from common.config import config
 
 
 class DatabaseException(Exception):
@@ -36,7 +36,7 @@ async def in_savepoint():
 
 async def get_db() -> aiosqlite.Connection:
     if not getattr(get_db, "db", None):
-        db = await aiosqlite.connect(config.SQLITE_DB_FILE)
+        db = await aiosqlite.connect(config.Db.DB_FILE)
         get_db.db = db
 
     return get_db.db
@@ -80,11 +80,11 @@ async def execute(
         await db.commit()
 
 
-def close_db() -> None:
+def db_close() -> None:
     asyncio.run(_async_close_db())
 
 
-def close_async_db() -> None:
+def db_close_async() -> None:
     """
     Это нужно для миграций, так как мы запускаем миграции через asyncio,
     нужно в этом же потоке и закрывать подключение

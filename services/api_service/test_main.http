@@ -11,3 +11,11 @@ Content-Type: application/x-www-form-urlencoded; charset=utf-8
 
 lead_id=37790041&event=%D0%9A%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D1%86%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD&lead_status=%D0%9A%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D1%86%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD&responsible_name=%D0%9F%D0%BE%D0%BC%D0%BE%D1%80%D0%B8%D0%BD%D0%B0+%D0%9F%D0%BE%D0%BB%D0%B8%D0%BD%D0%B0&event_time=19.08.2024+11%3A45&lead_url=https%3A%2F%2Fbestrealty1.amocrm.ru%2Fleads%2Fdetail%2F37790041&client_name=%D0%BD%D0%B0%D1%82%D0%B0%D0%BB%D1%8C%D1%8F+%D0%B8%D0%BB%D0%B8+%D0%BE%D0%BB%D1%8C%D0%B3%D0%B0&adres=&pipeline=%D0%9F%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D1%82%D0%B5%D0%BB%D0%B8&lead_type=%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0&object_type=&area=%D0%A6%D0%B8%D0%B0%D0%BD&analog_or_original=%D0%B0%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3
 ###
+
+
+
+POST https://best-realty.groza.dev/activity_by_customer/
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+
+lead_id=37790041&event=%D0%9A%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D1%86%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD&lead_status=%D0%9A%D0%B2%D0%B0%D0%BB%D0%B8%D1%84%D0%B8%D1%86%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD&responsible_name=%D0%9F%D0%BE%D0%BC%D0%BE%D1%80%D0%B8%D0%BD%D0%B0+%D0%9F%D0%BE%D0%BB%D0%B8%D0%BD%D0%B0&event_time=19.08.2024+11%3A45&lead_url=https%3A%2F%2Fbestrealty1.amocrm.ru%2Fleads%2Fdetail%2F37790041&client_name=%D0%BD%D0%B0%D1%82%D0%B0%D0%BB%D1%8C%D1%8F+%D0%B8%D0%BB%D0%B8+%D0%BE%D0%BB%D1%8C%D0%B3%D0%B0&adres=&pipeline=%D0%9F%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D1%82%D0%B5%D0%BB%D0%B8&lead_type=%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0&object_type=&area=%D0%A6%D0%B8%D0%B0%D0%BD&analog_or_original=%D0%B0%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3
+###

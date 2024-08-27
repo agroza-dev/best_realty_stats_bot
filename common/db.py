@@ -1,4 +1,6 @@
 import asyncio
+import sqlite3
+from sqlite3 import Connection
 from contextlib import asynccontextmanager
 from collections.abc import Iterable
 from typing import Any, AnyStr
@@ -40,6 +42,10 @@ async def get_db() -> aiosqlite.Connection:
         get_db.db = db
 
     return get_db.db
+
+
+def get_simple_conn() -> Connection:
+    return sqlite3.connect(config.Db.DB_FILE)
 
 
 async def fetch_all(

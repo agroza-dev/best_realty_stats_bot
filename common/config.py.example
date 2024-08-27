@@ -1,7 +1,12 @@
+import locale
 from pathlib import Path
+
+import pytz
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
+
+locale.setlocale(locale.LC_TIME, 'ru_RU')
 
 
 class Config:
@@ -22,6 +27,16 @@ class Config:
 
     class Store:
         LOGS_DIR = ROOT_DIR / 'var/logs'
+        IMG_DIR = ROOT_DIR / 'var/img'
+
+    class Date:
+        TIMEZONE = pytz.timezone("Europe/Moscow")
+
+    class Keyboard:
+        CURRENT_DAY_ACTIVITY: str = 'CURRENT_DAY_ACTIVITY'
+        LAST_DAY_ACTIVITY: str = 'LAST_DAY_ACTIVITY'
+        LAST_THREE_DAYS_ACTIVITY: str = 'LAST_THREE_DAYS_ACTIVITY'
+        LAST_WEEK_ACTIVITY: str = 'LAST_WEEK_ACTIVITY'
 
 
 config = Config()

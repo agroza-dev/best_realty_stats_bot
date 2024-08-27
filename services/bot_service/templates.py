@@ -5,6 +5,14 @@ import jinja2
 from common.config import config
 
 
+def ljust(value, width):
+    return f"{value:<{width}}"
+
+
+def rjust(value, width):
+    return f"{value:>{width}}"
+
+
 def render_template(template_name: str, data: dict | None = None) -> str:
     if data is None:
         data = {}
@@ -27,6 +35,8 @@ def _get_template_env():
             autoescape=True,
         )
 
+        env.filters['ljust'] = ljust
+        env.filters['rjust'] = rjust
         _get_template_env.template_env = env
 
     return _get_template_env.template_env

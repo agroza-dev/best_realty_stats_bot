@@ -1,0 +1,17 @@
+<b>📋Оперативный отчет за {% if range['end'] %}период c {{ range['start'] }} по {{ range['end'] }}{% else %}{{ range['start'] }}{% endif %}</b>:
+<br>
+<br>
+{% if activity %}
+    {% for status, info in activity.items() %}
+        <i>{{ status }}</i> : <b>{{ info['count'] }}</b>:
+        <br>
+        <br>
+        {% for manager, manager_info in info['data'].items() %}
+            {FOURPACES}{{ manager }}: <b>{{ manager_info['count'] }}</b>
+            <br>
+        {% endfor %}
+        <br>
+    {% endfor %}
+{% else %}
+Нет данных
+{% endif %}

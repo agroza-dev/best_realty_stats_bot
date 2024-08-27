@@ -4,3 +4,4 @@ poetry.lock
 common/config.py
 var/*.sqlite3
 var/logs/*.log*
+var/img/*.png

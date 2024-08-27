@@ -1,7 +1,7 @@
 from typing import cast
 
 import telegram
-from telegram import Chat, InlineKeyboardMarkup, Update
+from telegram import Chat, InlineKeyboardMarkup, Update, InputMediaPhoto
 from telegram.ext import ContextTypes
 
 
@@ -21,6 +21,44 @@ async def send_response(
         args["reply_markup"] = keyboard
 
     await context.bot.send_message(**args)
+
+
+async def send_photo(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    text: str,
+    photo: str,
+    keyboard: InlineKeyboardMarkup | None = None,
+    update_message: bool = False
+) -> None:
+    args = {
+        "chat_id": _get_chat_id(update),
+        "caption": text,
+        "photo": photo,
+        "parse_mode": telegram.constants.ParseMode.HTML,
+    }
+    if keyboard:
+        args["reply_markup"] = keyboard
+    if update_message and update.callback_query:
+        if not keyboard:
+            await update.callback_query.edit_message_media(
+                media=InputMediaPhoto(
+                    media=open(args['photo'], 'rb'),
+                    caption=args['caption'],
+                    parse_mode=args['parse_mode']
+                )
+            )
+        else:
+            await update.callback_query.edit_message_media(
+                media=InputMediaPhoto(
+                    media=open(args['photo'], 'rb'),
+                    caption=args['caption'],
+                    parse_mode=args['parse_mode']
+                ),
+                reply_markup=keyboard
+            )
+    else:
+        await context.bot.send_photo(**args)
 
 
 def _get_chat_id(update: Update) -> int:

@@ -13,6 +13,7 @@ class Config:
     class Bot:
         TOKEN: str = '662266222:AABBAAA55BB2AAB-1ABBBAAABBB432BBB'
         TEMPLATES_DIR = ROOT_DIR / "services/bot_service/templates"
+        TARGET_CHAT = -909090900
 
     class Contacts:
         MANAGER: str = ''

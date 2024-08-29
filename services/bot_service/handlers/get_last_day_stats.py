@@ -6,7 +6,7 @@ from common import logger
 from common.config import config
 from common.models.customer_activity import get_raw_activity, group_activity_by_status, get_plot
 from services.bot_service.handlers.keyboards import get_keyboard
-from services.bot_service.handlers.response import send_photo
+from services.bot_service.handlers.response import send_photo, send_response
 from services.bot_service.templates import render_template
 
 
@@ -18,8 +18,7 @@ async def handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     activity = await group_activity_by_status(activity)
 
     d_start = d_start.strftime("%d %B")
-    image_path = await get_plot(activity, d_start)
-    logger.info(image_path)
+
     params = {
         'range': {
             'start': d_start,
@@ -27,6 +26,17 @@ async def handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         },
         'activity': activity,
     }
+
+    if not activity:
+        await send_response(
+            update,
+            context,
+            render_template("default_stats.j2", params),
+            keyboard=get_keyboard()
+        )
+        return None
+
+    image_path = await get_plot(activity, d_start)
 
     await send_photo(
         update,

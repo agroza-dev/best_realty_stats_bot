@@ -4,6 +4,8 @@ import telegram
 from telegram import Chat, InlineKeyboardMarkup, Update, InputMediaPhoto
 from telegram.ext import ContextTypes
 
+from common import config
+
 
 async def send_response(
     update: Update,
@@ -62,4 +64,7 @@ async def send_photo(
 
 
 def _get_chat_id(update: Update) -> int:
+    if not hasattr(update, 'effective_chat'):
+        return config.Bot.TARGET_CHAT
+
     return cast(Chat, update.effective_chat).id

@@ -1,10 +1,14 @@
+import datetime
+
 from telegram import Update
+from telegram.ext import CommandHandler, ApplicationBuilder, CallbackQueryHandler
+
 from common import logger
 from common.config import config
-from telegram.ext import CommandHandler, ApplicationBuilder, MessageHandler, filters, CallbackQueryHandler
-from services.bot_service.handlers import start_handler
+from services.bot_service.handlers import get_current_day_stats, get_last_day_stats, get_last_three_days_stats, \
+    get_last_week_stats, set_daily_message
 from services.bot_service.handlers import help_handler
-from services.bot_service.handlers import get_current_day_stats, get_last_day_stats, get_last_three_days_stats, get_last_week_stats
+from services.bot_service.handlers import start_handler
 
 
 async def start() -> None:
@@ -30,7 +34,15 @@ async def start() -> None:
             get_last_week_stats,
             pattern=f'^{config.Keyboard.LAST_WEEK_ACTIVITY}')
         )
-
+        set_daily_message(
+            app,
+            config.Bot.TARGET_CHAT,
+            time_=datetime.time(
+                hour=config.Scheduler.SEND_DAILY_REPORT_AT['h'],
+                minute=config.Scheduler.SEND_DAILY_REPORT_AT['m'],
+                second=config.Scheduler.SEND_DAILY_REPORT_AT['s']
+            )
+        )
         await app.initialize()
 
         await app.start()

@@ -41,7 +41,7 @@ async def send_photo(
     }
     if keyboard:
         args["reply_markup"] = keyboard
-    if update_message and update.callback_query:
+    if update_message and hasattr(update, 'callback_query') and update.callback_query:
         if not keyboard:
             await update.callback_query.edit_message_media(
                 media=InputMediaPhoto(

@@ -37,15 +37,11 @@ async def handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return None
 
-    image_path = await get_plot(activity, d_start, d_end)
-
-    await send_photo(
+    await send_response(
         update,
         context,
-        photo=image_path,
-        text=render_template("default_stats.j2", params),
-        keyboard=get_keyboard(),
-        update_message=True
+        render_template("default_stats.j2", params),
+        keyboard=get_keyboard()
     )
 
 
